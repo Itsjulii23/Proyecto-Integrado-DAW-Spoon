@@ -33,10 +33,6 @@ h2 {
 .restaurante p {
     flex-grow: 1;
     overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
     margin-bottom: 1rem;
 }
 
