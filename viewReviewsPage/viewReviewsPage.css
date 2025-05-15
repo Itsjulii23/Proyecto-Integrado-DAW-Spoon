@@ -1,0 +1,29 @@
+#valoraciones {
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+.valoracion {
+    background-color: #AF47D2;
+    color: #F8EFFF;
+    padding: 20px;
+    border-radius: 2px;
+    text-align: center;
+}
+
+button {
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    margin-top: 0.2rem;
+}
+
+.eliminarValoracion {
+    background-color: lightgrey;
+    color: black;
+}

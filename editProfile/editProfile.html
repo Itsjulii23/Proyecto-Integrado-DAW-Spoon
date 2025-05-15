@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+    <link rel="stylesheet" href="editProfile.css">
+    <link rel="stylesheet" href="../others/header.css">
+    <link rel="stylesheet" href="../others/footer.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="icon" type="image/png" href="../img/logo.png">
+    <script src="http://vps-052b2506.vps.ovh.net/proyectos/Utiles/Apifetch.js"></script>
+</head>
+<body>
+
+<header>
+    <h1 class="title" onclick="window.location.href='../mainPage/mainPage.html'">Spoon</h1>
+    <nav class="topnav">
+        <a class="active" href="../mainPage/mainPage.html">Home</a>
+        <a id="loginLink" href="../loginPage/loginPage.html">Login</a>
+        <a id="signupLink" href="../registerPage/registerPage.html">Sign Up</a>
+    </nav>
+</header>
+
+<div class="main-container">
+    <section class="registerForm">
+        <form id="updateForm" enctype="multipart/form-data">
+            <h3>Edita tu Usuario</h3>
+            <div class="form-row">
+                <label for="upUser">Usuario</label>
+                <input type="text" id="upUser" name="upUser" required/>
+            </div>
+            <div class="form-row">
+                <label for="upBirthdate">Fecha de nacimiento</label>
+                <input type="date" id="upBirthdate" name="upBirthdate" required/>
+            </div>
+            <div class="form-row">
+                <label for="upPass">Cambiar Contraseña</label>
+                <input type="password" id="upPass" name="upPass" required/>
+            </div>
+            <div class="form-row">
+                <label for="profileImage">Imagen de perfil</label>
+                <input type="file" id="profileImage" name="profileImage" accept="image/*"/>
+            </div>
+            <div class="form-row">
+                <label for="bannerImage">Imagen de Banner</label>
+                <input type="file" id="bannerImage" name="bannerImage" accept="image/*"/>
+            </div>
+            <button type="submit" id="btnUpdate">Actualizar Perfil</button>
+        </form>
+    </section>
+</div>
+
+<footer>
+    <nav class="nav">
+        <a href="../mainPage/mainPage.html" class="nav__link">
+            <i class="material-icons nav__icon">home</i>
+            <span class="material-symbols-outlined">
+            Inicio
+        </span>
+        </a>
+        <a href="../bookingPage/bookingPage.html" class="nav__link nav__link--active">
+            <i class="material-icons nav__icon">book</i>
+            <span class="material-symbols-outlined">
+            Reservas
+        </span>
+        </a>
+        <a href="../ProfilePage/profilePage.html" class="nav__link">
+            <i class="material-icons nav__icon">person</i>
+            <span class="material-symbols-outlined">
+            Perfil
+        </span>
+        </a>
+    </nav>
+</footer>
+</body>
+<script src="../session/session.js"></script>
+<script src="editProfile.js" type="module"></script>
+</html>

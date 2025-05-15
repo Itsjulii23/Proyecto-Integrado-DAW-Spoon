@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spoon</title>
+    <link rel="stylesheet" href="registerPageStyle.css">
+    <link rel="stylesheet" href="../others/header.css">
+    <link rel="stylesheet" href="../others/footer.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="../others/modal.css">
+    <link rel="icon" type="image/png" href="../img/logo.png">
+    <script src="http://vps-052b2506.vps.ovh.net/proyectos/Utiles/Apifetch.js"></script>
+</head>
+<body>
+
+<header>
+    <h1 class="title" onclick="window.location.href='../mainPage/mainPage.html'">Spoon</h1>
+    <nav class="topnav">
+        <a href="../mainPage/mainPage.html">Home</a>
+        <a id="loginLink" href="../loginPage/loginPage.html">Login</a>
+        <a class="active" id="signupLink" href="../registerPage/registerPage.html">Sign Up</a>
+    </nav>
+</header>
+
+<section class="modal">
+    <div class="modalContainer">
+        <h2>SPOON</h2>
+        <p></p>
+    </div>
+</section>
+
+<div class="main-container">
+    <section class="registerForm">
+        <form>
+            <h3>Registrate</h3>
+            <div class="form-row">
+                <label for="regUser">Usuario</label>
+                <input type="text" id="regUser" name="regUser" required/>
+            </div>
+            <div class="form-row">
+                <label for="regEmail">Email</label>
+                <input type="email" id="regEmail" name="regEmail" required/>
+            </div>
+            <div class="form-row">
+                <label for="regBirthdate">Fecha de nacimiento</label>
+                <input type="date" id="regBirthdate" name="regBirthdate" required/>
+            </div>
+            <div class="form-row">
+                <label for="regPass">Contraseña</label>
+                <input type="password" id="regPass" name="regPass" required/>
+            </div>
+            <div class="form-row">
+                <label for="regPassConf">Confirmar Contraseña</label>
+                <input type="password" id="regPassConf" name="regPassConf" required/>
+            </div>
+            <button type="button" id="btnReservar">Registrate</button>
+        </form>
+    </section>
+</div>
+
+<footer>
+    <nav class="nav">
+        <a href="../mainPage/mainPage.html" class="nav__link">
+            <i class="material-icons nav__icon">home</i>
+            <span class="material-symbols-outlined">
+            Inicio
+        </span>
+        </a>
+        <a href="../bookingPage/bookingPage.html" class="nav__link nav__link--active">
+            <i class="material-icons nav__icon">book</i>
+            <span class="material-symbols-outlined">
+            Reservas
+        </span>
+        </a>
+        <a href="../ProfilePage/profilePage.html" class="nav__link">
+            <i class="material-icons nav__icon">person</i>
+            <span class="material-symbols-outlined">
+            Perfil
+        </span>
+        </a>
+    </nav>
+</footer>
+</body>
+<script src="../session/session.js"></script>
+<script src="register.js" type="module"></script>
+</html>
