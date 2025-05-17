@@ -25,6 +25,14 @@ function selectRestaurantesFav(userId) {
     postData("favPage.php", {data: peticion})
         .then(restaurantes => {
             let html = `
+
+    <section class="modalAlert">
+        <div class="modalContainerAlert">
+            <h2>SPOON</h2>
+            <p></p>
+        </div>
+    </section>
+
 <header>
     <h1 class="title" onclick="window.location.href='../mainPage/mainPage.html'">Spoon</h1>
     <nav class="topnav">
@@ -76,8 +84,9 @@ function selectRestaurantesFav(userId) {
             document.getElementById("restaurantes").addEventListener("click", function (event) {
                 if (event.target.classList.contains("eliminarGuardado")) {
                     event.preventDefault();
-                    const idRestaurante = event.target.id;
-                    deleteRestauranteFav(idRestaurante);
+                    const idRestauranteFav = event.target.id;
+                    console.log(idRestauranteFav)
+                    deleteRestauranteFav(idRestauranteFav);
                 }
             });
         })
@@ -86,16 +95,29 @@ function selectRestaurantesFav(userId) {
         });
 }
 
-function deleteRestauranteFav(idRestaurante) {
+function deleteRestauranteFav(idRestauranteFav) {
     peticion.accion = "deleteRestauranteFav";
-    peticion.idRestaurante = idRestaurante;
-
+    peticion.idRestauranteFav = idRestauranteFav;
+    console.log(idRestauranteFav);
     postData("favPage.php", {data: peticion})
         .then(() => {
-            alert("Restaurante eliminado con éxito");
-            window.location.reload();
+            mostrarModal("Restaurante favorito eliminado con éxito.");
+            setTimeout(() => {
+                window.location.href = "../favPage/favPage.html";
+            }, 3000);
         })
         .catch(error => {
-            console.error("Error eliminando restaurante favorito:", error);
+            mostrarModal("Error eliminando restaurante favorito:");
         });
+}
+
+function mostrarModal(mensaje) {
+    const modal = document.querySelector(".modalAlert");
+    const textModal = document.querySelector(".modalAlert p");
+    textModal.innerHTML = mensaje;
+    modal.classList.add("modalShow");
+
+    setTimeout(() => {
+        modal.classList.remove("modalShow")
+    }, 3000);
 }

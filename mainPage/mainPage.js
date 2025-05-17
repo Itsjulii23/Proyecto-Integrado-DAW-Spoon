@@ -39,6 +39,13 @@ function cargarHtml(isLoggedIn) {
         </div>
 </section>
 
+    <section class="modalAlert">
+        <div class="modalContainerAlert">
+            <h2>SPOON</h2>
+            <p></p>
+        </div>
+    </section>
+    
     <header>
         <h1 class="title" onclick="window.location.href='../mainPage/mainPage.html'">Spoon</h1>
         <nav class="topnav">`;
@@ -208,18 +215,18 @@ document.addEventListener("click", function (event) {
         peticion.accion = 'loadModalReview';
         peticion.idRestaurante = event.target.id || event.target.dataset.id;
         postData("restaurantes.php", {data: peticion}).then((reviewsdata) => {
-            mostrarModal(reviewsdata);
+            mostrarModalValoraciones(reviewsdata);
             setTimeout(() => {
             }, 3000);
         })
             .catch((error) => {
                 console.error("Error en la solicitud:", error);
-                mostrarModal("Error en la solicitud, intente más tarde.");
+                mostrarModalValoraciones("Error en la solicitud, intente más tarde.");
             });
     }
 });
 
-function mostrarModal(reviewsdata) {
+function mostrarModalValoraciones(reviewsdata) {
     const modal = document.querySelector(".modal");
     const modalContainer = document.querySelector(".modalContainer");
 
@@ -271,11 +278,24 @@ document.addEventListener("click", function (event) {
         postData("restaurantes.php", {data: peticion}).then((response) => {
             console.log(response);
             if (response.status === 'exists') {
-                alert("Este restaurante ya está en tus favoritos.");
+                mostrarModal("Este restaurante ya está en tus favoritos.");
             } else if (response.status === 'ok') {
-                alert("Restaurante guardado con éxito!");
+                mostrarModal("Restaurante guardado con éxito!");
+                setTimeout(() => {
+                    window.location.href = "../favPage/favPage.html";
+                }, 3000);
             }
         });
 
     }
 });
+
+function mostrarModal(mensaje) {
+    const modal = document.querySelector(".modalAlert");
+    const textModal = document.querySelector(".modalAlert p");
+    textModal.innerHTML = mensaje;
+    modal.classList.add("modalShow");
+    setTimeout(() => {
+        modal.classList.remove("modalShow")
+    }, 3000);
+}

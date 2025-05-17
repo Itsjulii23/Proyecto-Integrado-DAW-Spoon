@@ -26,8 +26,8 @@ function selectReservas(userId) {
         .then(reservas => {
             let html = `
 
-    <section class="modal">
-        <div class="modalContainer">
+    <section class="modalAlert">
+        <div class="modalContainerAlert">
             <h2>SPOON</h2>
             <p></p>
         </div>
@@ -118,8 +118,12 @@ function eliminarReserva(idReserva) {
 }
 
 function mostrarModal(mensaje) {
-    const modal = document.querySelector(".modal");
-    const textModal = document.querySelector(".modal p");
+    const modal = document.querySelector(".modalAlert");
+    const textModal = document.querySelector(".modalAlert p");
     textModal.innerHTML = mensaje;
     modal.classList.add("modalShow");
+
+    setTimeout(() => {
+        modal.classList.remove("modalShow")
+    }, 3000);
 }

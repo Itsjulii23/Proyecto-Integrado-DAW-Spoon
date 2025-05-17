@@ -27,11 +27,11 @@ class SPOONFAVPAGE
         return $stmt->fetchAll();
     }
 
-    static public function deleteRestauranteFav(int $idGuardado): void
+    static public function deleteRestauranteFav(int $idRestauranteFav): bool
     {
-        $stmt = self::$pdo->prepare("DELETE FROM favoritos WHERE id = :id");
-        $stmt->bindParam(':id', $idGuardado, PDO::PARAM_INT);
-        $stmt->execute();
+        $stmt = self::$pdo->prepare("DELETE FROM favoritos WHERE restaurante_id = :idRestauranteFav");
+        $stmt->bindParam(':idRestauranteFav', $idRestauranteFav, PDO::PARAM_INT);
+        return $stmt->execute();
     }
 }
 

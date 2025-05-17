@@ -1,5 +1,8 @@
 <?php
 
+ini_set("error_reporting", E_ALL);
+ini_set("display_errors", "on");
+
 include_once 'SPOONFAVPAGE.php';
 
 session_start();
@@ -13,8 +16,8 @@ if ($request && $request['accion'] == 'selectRestaurantesFav') {
     die();
 }
 
-if ($request && $request['accion'] == 'deleteRestaurantesFav') {
-    SPOONFAVPAGE::deleteRestauranteFav($request['idGuardado']);
-    echo json_encode(["status" => "ok"]);
+if ($request && $request['accion'] == 'deleteRestauranteFav') {
+    $restauranteFav = SPOONFAVPAGE::deleteRestauranteFav($request['idRestauranteFav']);
+    echo json_encode($restauranteFav);
     die();
 }

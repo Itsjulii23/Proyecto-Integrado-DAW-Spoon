@@ -1,23 +1,4 @@
-.container {
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: rgb(255, 255, 255);
-}
-
-.modalButton {
-    padding: 1rem 2rem;
-    border-radius: 5px;
-    border: 0;
-    font-size: 2rem;
-    background-color: #B771E5;
-    color: white;
-    cursor: pointer;
-}
-
-.modal {
+.modalAlert {
     position: fixed;
     top: 0;
     left: 0;
@@ -29,7 +10,7 @@
     opacity: 0;
 }
 
-.modalContainer {
+.modalContainerAlert {
     display: flex;
     position: relative;
     flex-direction: column;
@@ -43,12 +24,12 @@
     padding: 3rem 2.5rem;
 }
 
-.modalContainer h2 {
+.modalContainerAlert h2 {
     font-size: 2.5rem;
     color: #B771E5;
 }
 
-.modalContainer p {
+.modalContainerAlert p {
     margin-bottom: 10px;
     font-size: 1.2rem;
 }

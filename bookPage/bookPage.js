@@ -29,8 +29,8 @@ function cargarHTML() {
     </nav>
 </header>
 
-<section class="modal">
-    <div class="modalContainer">
+<section class="modalAlert">
+    <div class="modalContainerAlert">
         <h2>SPOON</h2>
         <p></p>
     </div>
@@ -92,17 +92,12 @@ function insertarReserva(event, restauranteId) {
     const numPersonas = document.getElementById('numPersonas').value;
 
     if (!fechaReserva || !horaReserva || !numPersonas) {
-        alert("Por favor, complete todos los campos.");
+        mostrarModal("Por favor, complete todos los campos.");
         return;
     }
 
     if (!validarFechaReserva(fechaReserva)) {
-        return;
-    }
-
-    if (!window.userId) {
-        alert("Debes iniciar sesión para hacer una reserva.");
-        return;
+        return
     }
 
     peticion.accion = 'insertReservaId';
@@ -125,25 +120,25 @@ function insertarReserva(event, restauranteId) {
         });
 }
 
-
-function mostrarModal(mensaje) {
-    const modal = document.querySelector(".modal");
-    const textModal = document.querySelector(".modal p");
-
-    textModal.innerHTML = mensaje;
-    modal.classList.add("modalShow");
-}
-
 function validarFechaReserva(fecha) {
     if (!fecha) {
-        alert("Por favor, selecciona una fecha.");
-        return false;
+        mostrarModal("Por favor, selecciona una fecha.");
     }
     const fechaSeleccionada = new Date(fecha);
     const dia = fechaSeleccionada.getUTCDay();
     if (dia === 1 || dia === 2) {
-        alert("El bar está cerrado los lunes y martes.");
-        return false;
+        mostrarModal("El bar está cerrado los lunes y martes.");
     }
-    return true;
+}
+
+function mostrarModal(mensaje) {
+    const modal = document.querySelector(".modalAlert");
+    const textModal = document.querySelector(".modalAlert p");
+
+    textModal.innerHTML = mensaje;
+    modal.classList.add("modalShow");
+
+    setTimeout(() => {
+        modal.classList.remove("modalShow")
+    }, 3000);
 }

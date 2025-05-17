@@ -7,11 +7,19 @@
     <link rel="stylesheet" href="editProfile.css">
     <link rel="stylesheet" href="../others/header.css">
     <link rel="stylesheet" href="../others/footer.css">
+    <link rel="stylesheet" href="../others/modal.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="icon" type="image/png" href="../img/logo.png">
     <script src="http://vps-052b2506.vps.ovh.net/proyectos/Utiles/Apifetch.js"></script>
 </head>
 <body>
+
+<section class="modalAlert">
+    <div class="modalContainerAlert">
+        <h2>SPOON</h2>
+        <p></p>
+    </div>
+</section>
 
 <header>
     <h1 class="title" onclick="window.location.href='../mainPage/mainPage.html'">Spoon</h1>
@@ -28,15 +36,11 @@
             <h3>Edita tu Usuario</h3>
             <div class="form-row">
                 <label for="upUser">Usuario</label>
-                <input type="text" id="upUser" name="upUser" required/>
-            </div>
-            <div class="form-row">
-                <label for="upBirthdate">Fecha de nacimiento</label>
-                <input type="date" id="upBirthdate" name="upBirthdate" required/>
+                <input type="text" id="upUser" name="upUser"/>
             </div>
             <div class="form-row">
                 <label for="upPass">Cambiar Contraseña</label>
-                <input type="password" id="upPass" name="upPass" required/>
+                <input type="password" id="upPass" name="upPass"/>
             </div>
             <div class="form-row">
                 <label for="profileImage">Imagen de perfil</label>

@@ -16,8 +16,8 @@ document.addEventListener("DOMContentLoaded", function () {
 function cargarHTML(isLoggedIn) {
     let html = `
 
-    <section class="modal">
-        <div class="modalContainer">
+    <section class="modalAlert">
+        <div class="modalContainerAlert">
             <h2>SPOON</h2>
             <p></p>
         </div>
@@ -103,13 +103,20 @@ function inicioSesion(event) {
         .catch((error) => {
             console.error("Error en la solicitud:", error);
             mostrarModal("Error en la solicitud, intente más tarde.");
+            setTimeout(() => {
+                window.location.href = "../loginPage/loginPage.html";
+            }, 3000);
         });
 }
 
 function mostrarModal(mensaje) {
-    const modal = document.querySelector(".modal");
-    const textModal = document.querySelector(".modal p");
+    const modal = document.querySelector(".modalAlert");
+    const textModal = document.querySelector(".modalAlert p");
 
     textModal.innerHTML = mensaje;
     modal.classList.add("modalShow");
+
+    setTimeout(() => {
+        modal.classList.remove("modalShow")
+    }, 3000);
 }

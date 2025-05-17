@@ -11,11 +11,11 @@ function registro(event) {
     const registroPasswordConf = document.getElementById("regPassConf").value.trim();
 
     if (!registroEmail || !registroPassword || !registroPasswordConf || !registroUser || !registroBirthdate) {
-        alert("Rellene todos los campos");
+        mostrarModal("Rellene todos los campos");
         return;
     }
     if (registroPassword !== registroPasswordConf) {
-        alert("Las contraseñas no coinciden");
+        mostrarModal("Las contraseñas no coinciden");
         return;
     }
     peticion.user = registroUser;
@@ -44,9 +44,13 @@ function registro(event) {
 }
 
 function mostrarModal(mensaje) {
-    const modal = document.querySelector(".modal");
-    const textModal = document.querySelector(".modal p");
+    const modal = document.querySelector(".modalAlert");
+    const textModal = document.querySelector(".modalAlert p");
 
     textModal.innerHTML = mensaje;
     modal.classList.add("modalShow");
+
+    setTimeout(() => {
+        modal.classList.remove("modalShow")
+    }, 3000);
 }

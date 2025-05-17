@@ -1,34 +1,74 @@
-document.getElementById("updateForm").addEventListener("submit", actualizarPerfil);
+document.addEventListener("DOMContentLoaded", () => {
+    let originalUser = "";
+    let profileImage = null;
+    let bannerImage = null;
 
-function actualizarPerfil(event) {
-    event.preventDefault();
+    const userInput = document.getElementById("upUser");
+    const passInput = document.getElementById("upPass");
+    const profileInput = document.getElementById("profileImage");
+    const bannerInput = document.getElementById("bannerImage");
+    const form = document.getElementById("updateForm");
 
-    const formData = new FormData();
-    const profileImage = document.getElementById("profileImage").files[0];
-    const bannerImage = document.getElementById("bannerImage").files[0];
+    fetch("../session/session.php")
+        .then(response => response.json())
+        .then(data => {
+            originalUser = data.usuario.user;
+            userInput.value = originalUser;
+        });
 
-    formData.append("accion", "update");
-    formData.append("user", document.getElementById("upUser").value.trim());
-    formData.append("password", document.getElementById("upPass").value.trim());
-    formData.append("birthdate", document.getElementById("upBirthdate").value.trim());
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
 
-    if (profileImage) formData.append("profileImage", profileImage);
-    if (bannerImage) formData.append("bannerImage", bannerImage);
+        const currentUser = userInput.value.trim();
+        const currentPass = passInput.value.trim();
+        profileImage = profileInput.files[0];
+        bannerImage = bannerInput.files[0];
 
-    console.log(profileImage)
-    console.log(bannerImage)
+        if (
+            currentUser === originalUser &&
+            currentPass === "" &&
+            !profileImage &&
+            !bannerImage
+        ) {
+            mostrarModal("No se ha realizado ningún cambio.");
+            return;
+        }
+        const formData = new FormData();
+        formData.append("userId", window.userId);
+        formData.append("upUser", currentUser);
+        if (currentPass !== "") formData.append("upPass", currentPass);
+        if (profileImage) formData.append("profileImage", profileImage);
+        if (bannerImage) formData.append("bannerImage", bannerImage);
 
-    fetch("editProfile.php", {
-        method: "POST",
-        body: formData,
-    })
-        .then(res => res.json())
-        .then(response => {
-            if (response.error) {
-                alert(response.error);
-            } else {
-                alert("Perfil actualizado correctamente");
-            }
+        fetch("editProfile.php", {
+            method: "POST",
+            body: formData
         })
-        .catch(error => console.error("Error:", error));
+            .then(res => res.json())
+            .then(result => {
+                if (result.success) {
+                    mostrarModal("Perfil actualizado correctamente.");
+                    setTimeout(() => {
+                        window.location.href = "../ProfilePage/profilePage.html";
+                    }, 3000);
+                } else {
+                    mostrarModal("Hubo un error al actualizar.");
+                }
+            })
+            .catch(err => {
+                console.error("Error en la actualización:", err);
+                mostrarModal("Error en la solicitud.");
+            });
+    });
+});
+
+function mostrarModal(mensaje) {
+    const modal = document.querySelector(".modalAlert");
+    const textModal = document.querySelector(".modalAlert p");
+    textModal.innerHTML = mensaje;
+    modal.classList.add("modalShow");
+
+    setTimeout(() => {
+        modal.classList.remove("modalShow")
+    }, 3000);
 }

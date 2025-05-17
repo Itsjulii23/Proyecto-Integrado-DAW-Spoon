@@ -27,8 +27,8 @@ function cargarHTML() {
             let html = '';
             html = `
 
-    <section class="modal">
-        <div class="modalContainer">
+    <section class="modalAlert">
+        <div class="modalContainerAlert">
             <h2>SPOON</h2>
             <p></p>
         </div>
@@ -112,22 +112,16 @@ function selectStars(selectedStar) {
 function insertarValoracion(restauranteId) {
     const puntuacionElem = document.getElementById("last-selected");
     if (!puntuacionElem) {
-        alert("Por favor, selecciona una puntuación.");
+        mostrarModal("Por favor, selecciona una puntuación.");
         return;
     }
 
     const puntuacion = puntuacionElem.getAttribute("data-value");
     const comentario = document.getElementById('comentarioRestaurante').value.trim();
     if (!comentario) {
-        alert("Por favor, escribe un comentario.");
+        mostrarModal("Por favor, escribe un comentario.");
         return;
     }
-
-    if (!window.userId) {
-        alert("Debes iniciar sesión para dejar una reseña.");
-        return;
-    }
-
     peticion.accion = 'insertarReview';
     peticion.idRestaurante = restauranteId;
     peticion.puntuacion = puntuacion;
@@ -151,9 +145,13 @@ function insertarValoracion(restauranteId) {
 }
 
 function mostrarModal(mensaje) {
-    const modal = document.querySelector(".modal");
-    const textModal = document.querySelector(".modal p");
+    const modal = document.querySelector(".modalAlert");
+    const textModal = document.querySelector(".modalAlert p");
 
     textModal.innerHTML = mensaje;
     modal.classList.add("modalShow");
+
+    setTimeout(() => {
+        modal.classList.remove("modalShow")
+    }, 3000);
 }
