@@ -1,5 +1,7 @@
 <?php declare(strict_types=1);
 
+//Archivo que se encarga de hacer el cifrado de las contraseñas de nuestros usuarios
+
 class Cifrado
 {
     const CLAVE = "DesarrolloWebEnEntornoServidor";

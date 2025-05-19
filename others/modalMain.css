@@ -1,3 +1,6 @@
+/*Archivo que le da el estilado a mi modal de mi pagina principal para que se vean las reseñas
+de cada restaurante*/
+
 .modal {
     position: fixed;
     top: 0;

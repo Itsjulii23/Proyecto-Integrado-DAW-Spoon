@@ -1,3 +1,6 @@
+//Se encarga de dar funcionalidades a mi interfaz de usuario asi como la posibilidad
+//cerrar la sesion.
+
 document.addEventListener("DOMContentLoaded", function () {
     fetch("../session/session.php")
         .then(response => response.json())

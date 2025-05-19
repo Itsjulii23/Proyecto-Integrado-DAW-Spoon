@@ -1,5 +1,8 @@
 <?php
 
+//Archivo que se encarga de iniciar la sesion despues de recibir y verificar los dattos que le hemos
+//pasado en nuestro formulario de inicio de sesion.
+
 ini_set('error_reporting', E_ALL);
 ini_set('display_errors', 'on');
 session_start();

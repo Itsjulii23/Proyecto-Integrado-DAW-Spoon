@@ -1,5 +1,8 @@
 <?php
 
+//Archivo que se encarga de recibir los datos de mi archivo js para procesarlos y mandarlos
+//a mi archivo que se encarga de hacer las consultas a la base de datos.
+
 ini_set("error_reporting", E_ALL);
 ini_set("display_errors", "on");
 

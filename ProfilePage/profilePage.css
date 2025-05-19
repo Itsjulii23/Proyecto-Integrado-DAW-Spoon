@@ -1,3 +1,5 @@
+/*Archivo que se encarga de darle el estilado a mi interfaz de usuario*/
+
 #userProfile {
     display: flex;
     justify-content: center;
@@ -6,8 +8,6 @@
     width: 50%;
     height: fit-content;
     margin: auto;
-    margin-top: 3rem;
-    margin-bottom: 5rem;
     padding-bottom: 1rem;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
@@ -120,8 +120,6 @@ h2 {
         width: 100%;
         height: fit-content;
         margin: auto;
-        margin-top: 3rem;
-        margin-bottom: 5rem;
         padding-bottom: 1rem;
     }
 }

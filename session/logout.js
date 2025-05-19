@@ -1,3 +1,6 @@
+//Archivo que se encarga de destruir la sesion del usuario haciendo una peticion a nuestro archivo
+//logout.js
+
 document.getElementById("logoutBtn").addEventListener("click", cerrarSesion);
 
 function cerrarSesion() {

@@ -1,3 +1,6 @@
+//Archivo js para la parte de la interfaz en donde se ven las reservas que ha realizado el usuario
+//o poder eliminarlas
+
 let peticion = {};
 
 document.addEventListener("DOMContentLoaded", function () {

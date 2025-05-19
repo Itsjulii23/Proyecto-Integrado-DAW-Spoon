@@ -1,5 +1,8 @@
 <?php
 
+//Archivo que se encarga de recibir los datos de mi archivo php para hacer las consulta a
+//mi base de datos en la interfaz de restaurantes guardados.
+
 ini_set("error_reporting", E_ALL);
 ini_set("display_errors", "on");
 

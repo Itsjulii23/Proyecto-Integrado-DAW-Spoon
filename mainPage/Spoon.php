@@ -1,5 +1,8 @@
 <?php
 
+//Archivo que se encarga de de hacer las peticiones a la base de datos con los datos o las peticiones
+//que recibe de nuestro backend.
+
 ini_set("error_reporting", E_ALL);
 ini_set("display_errors", "on");
 

@@ -1,4 +1,7 @@
 <?php
+//Archivo php en donde se recogen los datos y envian a un archivo que hace las consultas
+//a nuestra base de datos
+
 ini_set("error_reporting", E_ALL);
 ini_set("display_errors", "on");
 

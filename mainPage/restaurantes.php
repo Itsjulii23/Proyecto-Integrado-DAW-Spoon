@@ -1,5 +1,8 @@
 <?php
 
+//Se encarga de recibir los datos necesarios o de mandar las peticiones a un archivo que se encarga
+//de hacer las peticiones a nuestra base de datos.
+
 ini_set("error_reporting", E_ALL);
 ini_set("display_errors", "on");
 

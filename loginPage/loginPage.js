@@ -1,3 +1,7 @@
+//Archivo que se encarga de las funcionalidades de la interfaz del inicio de sesion
+//se encarga de mandar los datos de inicio de sesion y hacer una solicitud a nuestro archivo session
+//que se encarga de crear la sesion.
+
 let peticion = {};
 
 document.addEventListener("DOMContentLoaded", function () {

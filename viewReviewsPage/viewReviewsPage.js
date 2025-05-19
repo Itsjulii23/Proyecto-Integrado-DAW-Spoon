@@ -1,3 +1,6 @@
+//Archivo que se encarga de las funcionalidades de nuestra interfaz de nuestros restaurantes guardados
+//así como eliminar o visualizar nuestros restaurantes guardados.
+
 let peticion = {};
 
 document.addEventListener("DOMContentLoaded", function () {

@@ -1,3 +1,6 @@
+//Archivo que se dedica a las funcionalidades de mi interfaz de la edicion del perfil de usuario
+//asi como poder cambiar la foto de perfil la del banner el nombre de usuario o la contraseña.
+
 document.addEventListener("DOMContentLoaded", () => {
     let originalUser = "";
     let profileImage = null;

@@ -1,3 +1,6 @@
+//Se encarga de dar funcionalidades a nuestra interfaz de la pagina principal
+//asi como ver las reseñas de los restaurantes cargar un mapa interactivo con los restaurantes de nuestra aplicacion.
+
 let peticion = {};
 
 document.addEventListener("DOMContentLoaded", function () {

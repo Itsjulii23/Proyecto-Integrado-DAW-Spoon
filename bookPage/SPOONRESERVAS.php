@@ -1,5 +1,8 @@
 <?php
 
+//Archivo que recibe los datos de nuestro archivo php y hace las consultas en la base de datos
+//en el apartado de la reserva del restaurante elegido
+
 ini_set("error_reporting", E_ALL);
 ini_set("display_errors", "on");
 

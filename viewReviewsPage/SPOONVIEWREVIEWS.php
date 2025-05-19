@@ -1,5 +1,8 @@
 <?php
 
+//Archivo que se encarga de hacer las consultas a la base de datos dependiendo de las peticones recibidas..
+
+
 ini_set("error_reporting", E_ALL);
 ini_set("display_errors", "on");
 

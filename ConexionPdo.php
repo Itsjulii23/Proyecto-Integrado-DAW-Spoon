@@ -1,5 +1,7 @@
 <?php
 
+//Archivo que se encarga de poder realizar la conexion pdo a mi base de datos
+
 class ConexionPdo
 {
     public static function conectar(string $bd = '')

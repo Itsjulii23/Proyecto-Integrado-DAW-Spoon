@@ -1,4 +1,6 @@
 <?php
+//Archivo para introducir las oftos a mi base de datos ya que introducimos
+//las rutas relativas de mis fotos en la base de datos.
 
 ini_set('display_errors', 1);
 error_reporting(E_ALL);

@@ -1,3 +1,6 @@
+//Archivo que se dedica de dar funcionalidades a nuestra interfaz de registro asi como mandar los
+//datos del registro a nuestro backend para que los procese.
+
 let peticion = {};
 
 document.getElementById("btnReservar").addEventListener("click", registro);

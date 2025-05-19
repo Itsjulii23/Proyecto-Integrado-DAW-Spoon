@@ -1,3 +1,7 @@
+//Archivo que se encarga de las funcionalidades de nuestra interfaz de las valoraciones del usuario.
+//Asi como el envio del comentario y la valoracion del mismo a nuestro backend para que lo procese
+//y haga las peticiones o consultas necesarias a nuestra base de datos.
+
 let peticion = {};
 
 document.addEventListener("DOMContentLoaded", function () {

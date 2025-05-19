@@ -1,5 +1,8 @@
 <?php
 
+//Archivo que se encarga de procesar los datos recibidos del registro y hacer consultas ala base de datos
+//para la insercion de nuestro nuevo usuario.
+
 ini_set('error_reporting', E_ALL);
 ini_set('display_errors', 'on');
 ini_set('max_execution_time', 10);

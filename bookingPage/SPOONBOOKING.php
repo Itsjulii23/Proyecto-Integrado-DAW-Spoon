@@ -1,5 +1,8 @@
 <?php
 
+//Archivo php que es una clase la cual se encarga de hacer las consultas a la base de datos
+//con los datos que ha recibido del archivo php
+
 ini_set("error_reporting", E_ALL);
 ini_set("display_errors", "on");
 

@@ -1,3 +1,6 @@
+//Archivo que se encarga de las funcionalidades de la interfaz del restaurante en donde
+//hacemos la reserva como escoger la hora el dia o el numero de persona
+
 let peticion = {};
 
 document.addEventListener("DOMContentLoaded", function () {
