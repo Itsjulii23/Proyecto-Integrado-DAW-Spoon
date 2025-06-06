@@ -1,5 +1,8 @@
 /*Archivo que se encarga de dar estilado a nuestra interfaz de los restaurantes guardados*/
 
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+
 #valoraciones {
     margin-top: 1rem;
     display: grid;
@@ -28,4 +31,15 @@ button {
 .eliminarValoracion {
     background-color: lightgrey;
     color: black;
+}
+
+@media screen and (max-width: 768px) {
+    #valoraciones {
+        margin-top: 2rem;
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 2rem;
+        padding: 0 1rem;
+        margin-bottom: 4rem;
+    }
 }

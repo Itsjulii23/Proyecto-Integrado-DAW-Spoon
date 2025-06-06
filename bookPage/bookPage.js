@@ -21,10 +21,13 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function cargarHTML() {
-    let html = '';
     const restauranteId = new URLSearchParams(window.location.search).get('id');
-    console.log("Restaurante ID:", restauranteId);
-    html = `
+    peticion.accion = 'selectRestauranteId';
+    peticion.restauranteId = restauranteId;
+
+    postData("reservas.php", {data: peticion})
+        .then(response => {
+            let html = `
 <header>
     <h1 class="title" onclick="window.location.href='../mainPage/mainPage.html'">Spoon</h1>
     <nav class="topnav">
@@ -42,11 +45,13 @@ function cargarHTML() {
 <div class="main-container">
     <section class="bookForm">
         <form>
-            <h3 class="">Haz tu reserva en</h3>
+            <h3 class="">Haz tu reserva en: ${response[0].nombre}</h3>
             <label for="fechaReserva">Date</label>
             <input type="date" id="fechaReserva" name="fechaReserva" required/>
             <label for="horaReserva">Hora</label>
-            <input type="time" id="horaReserva" name="horaReserva" required/>
+            <select id="horaReserva" name="horaReserva" required>
+                <option value="">Selecciona una hora</option>
+            </select>
             <label for="numPersonas">Número de Personas</label>
             <input type="number" id="numPersonas" name="numPersonas" required/>
             <button type="button" id="reservarBtn">Reservar</button>
@@ -69,24 +74,87 @@ function cargarHTML() {
             <span class="material-symbols-outlined">Perfil</span>
         </a>
     </nav>
-</footer>`;
+</footer>
+            `;
 
-    document.body.innerHTML = html;
+            document.body.innerHTML = html;
 
-    peticion.accion = 'selectRestauranteId';
-    peticion.restauranteId = restauranteId;
+            const inputFecha = document.getElementById('fechaReserva');
+            const today = new Date();
+            const yyyy = today.getFullYear();
+            const mm = String(today.getMonth() + 1).padStart(2, '0');
+            const dd = String(today.getDate()).padStart(2, '0');
+            const minDate = `${yyyy}-${mm}-${dd}`;
+            inputFecha.setAttribute("min", minDate);
+
+            document.getElementById('reservarBtn').addEventListener('click', function (event) {
+                insertarReserva(event, restauranteId);
+            });
+
+            document.getElementById('fechaReserva').addEventListener('change', function (event) {
+                selecthours(event);
+            });
+        })
+        .catch(error => console.error("Error cargando restaurante:", error));
+}
+
+
+function selecthours(event) {
+    event.preventDefault();
+    const idRestaurante = new URLSearchParams(window.location.search).get('id');
+    const fechaSeleccionada = document.getElementById('fechaReserva').value;
+
+    if (!fechaSeleccionada) {
+        mostrarModal("Por favor, selecciona una fecha para ver las horas disponibles.");
+        return;
+    }
+
+    peticion.accion = 'selectHours';
+    peticion.day = fechaSeleccionada;
+    peticion.idRestaurante = idRestaurante;
 
     postData("reservas.php", {data: peticion})
         .then((response) => {
-            console.log("Restaurante:", response[0].nombre);
-            document.querySelector("h3").textContent = `Haz tu reserva en: ${response[0].nombre}`;
+            console.log("Reservas por hora:", response);
+            const todasLasHoras = generarHorasDisponibles();
+            const horasDisponibles = todasLasHoras.filter(hora => {
+                const reserva = response.find(res => res.hora_reserva.substring(0, 5) === hora);
+                return !reserva || reserva.total < 2;
+            });
+            actualizarSelectHoras(horasDisponibles);
         })
-        .catch(error => console.error("Error cargando restaurante:", error));
+        .catch(error => console.error("Error consultando horas:", error));
+}
 
-    document.getElementById('reservarBtn').addEventListener('click', function (event) {
-        insertarReserva(event, restauranteId);
+
+function generarHorasDisponibles() {
+    const horas = [];
+    const agregarHoras = (inicio, fin) => {
+        let horaActual = new Date(`1970-01-01T${inicio}:00`);
+        const horaFin = new Date(`1970-01-01T${fin}:00`);
+        while (horaActual <= horaFin) {
+            const hora = horaActual.toTimeString().substring(0, 5);
+            horas.push(hora);
+            horaActual.setMinutes(horaActual.getMinutes() + 15);
+        }
+    };
+    agregarHoras("12:00", "16:00");
+    agregarHoras("20:00", "23:00");
+    return horas;
+}
+
+function actualizarSelectHoras(horasDisponibles) {
+    const selectHora = document.getElementById('horaReserva');
+    selectHora.innerHTML = '<option value="">Selecciona una hora</option>';
+
+    horasDisponibles.forEach(hora => {
+        const option = document.createElement('option');
+        option.value = hora;
+        option.textContent = hora;
+        selectHora.appendChild(option);
     });
 }
+
 
 function insertarReserva(event, restauranteId) {
     event.preventDefault();
@@ -126,13 +194,17 @@ function insertarReserva(event, restauranteId) {
 function validarFechaReserva(fecha) {
     if (!fecha) {
         mostrarModal("Por favor, selecciona una fecha.");
+        return false;
     }
     const fechaSeleccionada = new Date(fecha);
     const dia = fechaSeleccionada.getUTCDay();
     if (dia === 1 || dia === 2) {
         mostrarModal("El bar está cerrado los lunes y martes.");
+        return false;
     }
+    return true;
 }
+
 
 function mostrarModal(mensaje) {
     const modal = document.querySelector(".modalAlert");

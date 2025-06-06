@@ -66,10 +66,12 @@ html, body {
 .restaurante h3 {
     font-size: 1.5rem;
     margin-bottom: 0.5rem;
+    color: #B771E5;
 }
 
 .saveRestaurant {
     cursor: pointer;
+    color: black;
 }
 
 .restaurante p {

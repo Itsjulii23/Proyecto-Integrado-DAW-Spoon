@@ -2,6 +2,11 @@
 
 //Archivo que se encarga de poder realizar la conexion pdo a mi base de datos
 
+namespace src;
+
+use PDO;
+use PDOException;
+
 class ConexionPdo
 {
     public static function conectar(string $bd = '')

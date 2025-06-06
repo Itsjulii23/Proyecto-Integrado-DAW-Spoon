@@ -3,19 +3,19 @@
 namespace tests;
 
 use PHPUnit\Framework\TestCase;
-use SPOONBOOKING;
+use src\SPOONBOOKINGPAGE;
 
-class SPOONBOOKINGTEST extends TestCase
+class SPOONBOOKINGPAGETest extends TestCase
 {
     protected function setUp(): void
     {
-        SPOONBOOKING::init('scoop');
+        SPOONBOOKINGPAGE::init('scoop');
     }
 
     public function testSelectReservasReturnsArray()
     {
         $userId = 17;
-        $result = SPOONBOOKING::selectReservas($userId);
+        $result = SPOONBOOKINGPAGE::selectReservas($userId);
         $this->assertIsArray($result);
     }
 }

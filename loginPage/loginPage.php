@@ -3,12 +3,17 @@
 //Archivo que se encarga de iniciar la sesion despues de recibir y verificar los dattos que le hemos
 //pasado en nuestro formulario de inicio de sesion.
 
+
 ini_set('error_reporting', E_ALL);
 ini_set('display_errors', 'on');
-session_start();
 
-require '../ConexionPdo.php';
+require '../src/ConexionPdo.php';
+
+use src\ConexionPdo;
+
 require '../Cifrado.php';
+
+session_start();
 
 $conexion = new ConexionPdo();
 $pdo = $conexion::conectar("scoop");

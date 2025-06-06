@@ -3,12 +3,15 @@
 //Archivo php que es una clase la cual se encarga de hacer las consultas a la base de datos
 //con los datos que ha recibido del archivo php
 
+namespace src;
+
 ini_set("error_reporting", E_ALL);
 ini_set("display_errors", "on");
 
-include_once '../ConexionPdo.php';
+use PDO;
+use src\ConexionPdo;
 
-class SPOONBOOKING
+class SPOONBOOKINGPAGE
 {
     static public $pdo = null;
 
@@ -40,4 +43,4 @@ class SPOONBOOKING
     }
 }
 
-SPOONBOOKING::init('scoop');
+SPOONBOOKINGPAGE::init('scoop');

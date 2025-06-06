@@ -3,11 +3,13 @@
 //Archivo que se encarga de recibir los datos del formulario para la edicion del perfil,
 //los procesa y hace las consultas de datos para actualizar el usuario y la variable de usuario.
 
-ini_set('error_reporting', E_ALL);
-ini_set('display_errors', 'on');
-ini_set('max_execution_time', 10);
+ini_set("error_reporting", E_ALL);
+ini_set("display_errors", "on");
 
-require '../ConexionPdo.php';
+require '../src/ConexionPdo.php';
+
+use src\ConexionPdo;
+
 require '../Cifrado.php';
 
 session_start();

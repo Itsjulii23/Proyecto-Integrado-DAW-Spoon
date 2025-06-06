@@ -3,12 +3,15 @@
 //Archivo que recibe los datos de nuestro archivo php y hace las consultas en la base de datos
 //en el apartado de la reserva del restaurante elegido
 
+namespace src;
+
 ini_set("error_reporting", E_ALL);
 ini_set("display_errors", "on");
 
-include_once '../ConexionPdo.php';
+use PDO;
+use src\ConexionPdo;
 
-class SPOONRESERVAS
+class SPOONBOOKPAGE
 {
     static public $pdo = null;
 
@@ -26,6 +29,22 @@ class SPOONRESERVAS
         return $stmt->fetchAll();
     }
 
+    static public function selectHours(string $day, int $idRestaurante): array
+    {
+        $stmt = self::$pdo->prepare("
+        SELECT hora_reserva, COUNT(*) as total
+        FROM reserva
+        WHERE fecha_reserva = :day AND restaurante_id = :idRestaurante
+        GROUP BY hora_reserva
+    ");
+
+        $stmt->bindParam(':day', $day, PDO::PARAM_STR);
+        $stmt->bindParam(':idRestaurante', $idRestaurante, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+
     static public function insertReservaId(int $idRestaurante, string $fechaReserva, string $horaReserva, int $numPersonas, int $userId): bool
     {
         $stmt = self::$pdo->prepare("
@@ -41,4 +60,4 @@ class SPOONRESERVAS
     }
 }
 
-SPOONRESERVAS::init('scoop');
+SPOONBOOKPAGE::init('scoop');

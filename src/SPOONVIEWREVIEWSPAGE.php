@@ -2,13 +2,15 @@
 
 //Archivo que se encarga de hacer las consultas a la base de datos dependiendo de las peticones recibidas..
 
+namespace src;
 
 ini_set("error_reporting", E_ALL);
 ini_set("display_errors", "on");
 
-include_once '../ConexionPdo.php';
+use PDO;
+use src\ConexionPdo;
 
-class SPOONVIEWREVIEWS
+class SPOONVIEWREVIEWSPAGE
 {
     static public $pdo = null;
 
@@ -46,4 +48,4 @@ class SPOONVIEWREVIEWS
     }
 }
 
-SPOONVIEWREVIEWS::init('scoop');
+SPOONVIEWREVIEWSPAGE::init('scoop');

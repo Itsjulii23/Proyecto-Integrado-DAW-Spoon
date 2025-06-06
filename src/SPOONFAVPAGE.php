@@ -3,10 +3,13 @@
 //Archivo que se encarga de recibir los datos de mi archivo php para hacer las consulta a
 //mi base de datos en la interfaz de restaurantes guardados.
 
+namespace src;
+
 ini_set("error_reporting", E_ALL);
 ini_set("display_errors", "on");
 
-include_once '../ConexionPdo.php';
+use PDO;
+use src\ConexionPdo;
 
 class SPOONFAVPAGE
 {

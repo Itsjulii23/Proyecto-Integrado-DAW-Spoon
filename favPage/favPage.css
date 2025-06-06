@@ -1,5 +1,7 @@
 /*Archivo que se encarga de dar el estilado a mi interfaz de restaurantes favoritos.*/
 
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
 h2 {
     text-align: center;
 }
@@ -65,4 +67,15 @@ h2 {
 
 .restaurante button:hover {
     background-color: #AF47D2;
+}
+
+@media screen and (max-width: 768px) {
+    #restaurantes {
+        margin-top: 2rem;
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 2rem;
+        padding: 0 1rem;
+        margin-bottom: 4rem;
+    }
 }

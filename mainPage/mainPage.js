@@ -134,11 +134,17 @@ function cargarRestaurantesMapa() {
             let lat = restaurante[k].latitud;
             let lon = restaurante[k].longitud;
             L.marker([lat, lon]).addTo(markerLayer)
-                .bindPopup(`<div class="popUp"><b>${restaurante[k].nombre}</b>
-                    <button onclick="window.location.href='../bookPage/bookPage.html?id=${restaurante[k].id}'">Reservar</button>
+                .bindPopup(`<div class="popUp">
+                    <div class="popOutData">
+                        <b>${restaurante[k].nombre}</b>
+                        <img src="../${restaurante[k].img}" alt="popOutPhoto">
+                    </div>
+                        <div class="popOutBtn">
+                    <button class="bookBtn" onclick="window.location.href='../bookPage/bookPage.html?id=${restaurante[k].id}'">Reservar</button>
                     <button class="viewReviewBtn" data-id="${restaurante[k].id}">Ver Reseñas</button>
-                    <button onclick="window.location.href='../reviewsPage/reviewPage.html?id=${restaurante[k].id}'">Hacer Reseña</button>
-                </div>`);
+                    <button class="reviewBtn" onclick="window.location.href='../reviewsPage/reviewPage.html?id=${restaurante[k].id}'">Hacer Reseña</button>
+                        </div>
+                    </div>`);
         }
     });
 }

@@ -2,12 +2,15 @@
 
 //Archivo que se encarga de hacer las consultas a la base de datos recibiendo los datos de nuestro backend.
 
+namespace src;
+
 ini_set("error_reporting", E_ALL);
 ini_set("display_errors", "on");
 
-include_once '../ConexionPdo.php';
+use PDO;
+use src\ConexionPdo;
 
-class SPOONREVIEWS
+class SPOONREVIEWSPAGE
 {
 
     static public $pdo = null;
@@ -39,4 +42,4 @@ class SPOONREVIEWS
     }
 }
 
-SPOONREVIEWS::init('scoop');
+SPOONREVIEWSPAGE::init('scoop');

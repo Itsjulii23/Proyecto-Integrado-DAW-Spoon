@@ -3,12 +3,15 @@
 //Archivo que se encarga de de hacer las peticiones a la base de datos con los datos o las peticiones
 //que recibe de nuestro backend.
 
+namespace src;
+
 ini_set("error_reporting", E_ALL);
 ini_set("display_errors", "on");
 
-include_once '../ConexionPdo.php';
+use PDO;
+use src\ConexionPdo;
 
-class Spoon
+class SPOONMAINPAGE
 {
     static public $pdo = null;
 
@@ -20,7 +23,7 @@ class Spoon
 
     static public function selectRestaurantesMap(): ?array
     {
-        $stmt = self::$pdo->prepare("SELECT id,nombre,latitud,longitud FROM restaurante");
+        $stmt = self::$pdo->prepare("SELECT id,nombre,latitud,longitud,img FROM restaurante");
         $stmt->execute();
         return $stmt->fetchAll();
     }
@@ -85,4 +88,4 @@ class Spoon
     }
 }
 
-SPOON::init('scoop');
+SPOONMAINPAGE::init('scoop');

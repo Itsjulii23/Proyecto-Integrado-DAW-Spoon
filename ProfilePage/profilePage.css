@@ -8,6 +8,7 @@
     width: 50%;
     height: fit-content;
     margin: auto;
+    margin-bottom: 5rem;
     padding-bottom: 1rem;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
@@ -120,6 +121,7 @@ h2 {
         width: 100%;
         height: fit-content;
         margin: auto;
+        margin-bottom: 5rem;
         padding-bottom: 1rem;
     }
 }

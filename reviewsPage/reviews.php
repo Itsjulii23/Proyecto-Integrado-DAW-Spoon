@@ -4,10 +4,12 @@
 //peticiones a un archivo que se encarga de hacer las consultas a la base de datos dependiendo de la peticion
 //que tenga que hacer.
 
+require_once __DIR__ . '/../vendor/autoload.php';
+
+use src\SPOONREVIEWSPAGE;
+
 ini_set("error_reporting", E_ALL);
 ini_set("display_errors", "on");
-
-include_once 'SPOONREVIEWS.php';
 
 session_start();
 if (!isset($_SESSION['usuario'])) {
@@ -20,13 +22,13 @@ $request = json_decode(file_get_contents('php://input'), true);
 if ($request) $request = $request['data'];
 
 if ($request && $request['accion'] == 'selectRestauranteId') {
-    $dataRestauranteId = SPOONREVIEWS::selectRestauranteId($request['idRestaurante']);
+    $dataRestauranteId = SPOONREVIEWSPAGE::selectRestauranteId($request['idRestaurante']);
     echo json_encode($dataRestauranteId);
     die();
 }
 
 if ($request && $request['accion'] == 'insertarReview') {
-    $dataReviewId = SPOONREVIEWS::insertReview($request['idRestaurante'], $request['puntuacion'], $request['comentario'], $request['idUser']);
+    $dataReviewId = SPOONREVIEWSPAGE::insertReview($request['idRestaurante'], $request['puntuacion'], $request['comentario'], $request['idUser']);
     echo json_encode($dataReviewId);
     die();
 }

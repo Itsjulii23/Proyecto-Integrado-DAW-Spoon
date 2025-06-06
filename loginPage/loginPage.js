@@ -102,13 +102,16 @@ function inicioSesion(event) {
                 }, 3000);
             } else {
                 mostrarModal("Credenciales inválidas");
+                setTimeout(() => {
+                    window.location.href = "loginPage.html";
+                }, 3000);
             }
         })
         .catch((error) => {
             console.error("Error en la solicitud:", error);
             mostrarModal("Error en la solicitud, intente más tarde.");
             setTimeout(() => {
-                window.location.href = "../loginPage/loginPage.html";
+                window.location.href = "../ProfilePage/profilePage.html";
             }, 3000);
         });
 }

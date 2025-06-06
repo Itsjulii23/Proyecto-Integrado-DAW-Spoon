@@ -3,10 +3,12 @@
 //Archivo que se encarga de recibir los datos de mi archivo js para procesarlos y mandarlos
 //a mi archivo que se encarga de hacer las consultas a la base de datos.
 
+require_once __DIR__ . '/../vendor/autoload.php';
+
+use src\SPOONFAVPAGE;
+
 ini_set("error_reporting", E_ALL);
 ini_set("display_errors", "on");
-
-include_once 'SPOONFAVPAGE.php';
 
 session_start();
 $request = json_decode(file_get_contents('php://input'), true);
